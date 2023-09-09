@@ -1,4 +1,4 @@
-import contactSchema from "../../schemas/contact-schema.js";
+import {contactAddSchema, contactUpdateSchema} from "../../models/Contact.js";
 import { validateBody } from "../../decorators/index.js";
 
 const addContactValidate = validateBody(contactSchema.contactAddSchema);
