@@ -10,7 +10,7 @@ const authRouter = express.Router();
 const userRegisterValidate = validateBody(userSchemas.userRegisterSchema);
 const userSigninValidate = validateBody(userSchemas.userLoginSchema);
 
-authRouter.post("/register", upload.single("avatar"), userRegisterValidate, authController.register);
+authRouter.post("/register", userRegisterValidate, authController.register);
 
 authRouter.post("/login", userSigninValidate, authController.login);
 
@@ -18,7 +18,8 @@ authRouter.get("/current", authenticate, authController.getCurrent);
 
 authRouter.post("/logout", authenticate, authController.logout);
 
-authRouter.patch("/avatars", authenticate, upload.single("avatar"), authController.updateAvatar);
+authRouter.patch("/avatars", authenticate, upload.single("avatarURL"), authController.updateAvatar);
 
 export default authRouter;
  
+  
