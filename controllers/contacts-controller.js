@@ -1,3 +1,4 @@
+
 import Contact from "../models/Contact.js";
 import { HttpError } from "../helpers/index.js";
 
@@ -10,9 +11,9 @@ const getAll = async (req, res) => {
   let filter = { owner };
 
   const result = await Contact.find(filter)
-  .skip(skip)
-  .limit(limit)
-  .populate("owner", "email subscription");
+    .skip(skip)
+    .limit(limit)
+    .populate("owner", "email subscription");
   res.json(result);
 };
 
@@ -30,6 +31,7 @@ const add = async (req, res) => {
   const { _id: owner } = req.user;
   const result = await Contact.create({ ...req.body, owner });
   res.status(201).json(result);
+
 };
 
 const updateById = async (req, res) => {
