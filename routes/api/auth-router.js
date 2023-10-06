@@ -9,8 +9,14 @@ const authRouter = express.Router();
 
 const userRegisterValidate = validateBody(userSchemas.userRegisterSchema);
 const userSigninValidate = validateBody(userSchemas.userLoginSchema);
+const userEmailValidate = validateBody(userSchemas.userEmailSchema);
+ 
 
 authRouter.post("/register", userRegisterValidate, authController.register);
+
+authRouter.get("/verify/:verificationCode", authController.verify);
+
+authRouter.post("/verify", userEmailValidate, authController.resendVerifyEmail);
 
 authRouter.post("/login", userSigninValidate, authController.login);
 
